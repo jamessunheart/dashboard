@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  dashboard:
+    build: .
+    container_name: fpai-dashboard
+    ports:
+      - "8002:8002"
+    environment:
+      - REGISTRY_URL=http://198.54.123.234:8000
+      - ORCHESTRATOR_URL=http://198.54.123.234:8001
+      - PORT=8002
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8002/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s

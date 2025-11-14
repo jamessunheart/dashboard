@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero" style="padding: 4rem 2rem;">
+    <div class="container">
+        <h1>The Sacred Loop</h1>
+        <p class="tagline">The continuous cycle that builds the organism</p>
+    </div>
+</div>
+
+<section>
+    <div class="container">
+        <div class="sacred-loop">
+            <p style="font-size: 1.2rem; margin-bottom: 3rem; color: var(--muted-text);">
+                The Sacred Loop is the core pattern that powers Full Potential AI. It's a continuous, lightweight,
+                infinitely scalable cycle that converts architectural intent into live, production systems.
+            </p>
+
+            <div class="loop-step">
+                <h3>1. Architect Declares Intent</h3>
+                <p>In 1-3 sentences, the Architect defines what needs to be built. Pure vision, no tactics.</p>
+                <p style="color: var(--muted-text); font-size: 0.9rem; margin-top: 0.5rem;">
+                    Example: "Create a dashboard that shows the system alive"
+                </p>
+            </div>
+
+            <div style="text-align: center; font-size: 2rem; color: var(--primary-color);">↓</div>
+
+            <div class="loop-step">
+                <h3>2. AI Generates SPEC</h3>
+                <p>Using the Spec Generator Template + Foundation Files, AI expands intent into a complete specification.</p>
+                <p style="color: var(--muted-text); font-size: 0.9rem; margin-top: 0.5rem;">
+                    Output: 9-section SPEC with UDC compliance, security requirements, and copy-paste prompts
+                </p>
+            </div>
+
+            <div style="text-align: center; font-size: 2rem; color: var(--primary-color);">↓</div>
+
+            <div class="loop-step">
+                <h3>3. Coordinator Packages & Assigns</h3>
+                <p>The Coordinator creates a work package (SPEC + Foundation Files) and assigns it to an Apprentice.</p>
+                <p style="color: var(--muted-text); font-size: 0.9rem; margin-top: 0.5rem;">
+                    Package posted to recruitment platforms → Apprentice claims it
+                </p>
+            </div>
+
+            <div style="text-align: center; font-size: 2rem; color: var(--primary-color);">↓</div>
+
+            <div class="loop-step">
+                <h3>4. Apprentice Builds via AI</h3>
+                <p>Apprentice uploads 5 Foundation Files to Claude Project, uses copy-paste prompts from SPEC. Claude generates complete code.</p>
+                <p style="color: var(--muted-text); font-size: 0.9rem; margin-top: 0.5rem;">
+                    Time: 4-6 hours (vs 20-40 hours traditional) = <strong>85-95% time compression</strong>
+                </p>
+            </div>
+
+            <div style="text-align: center; font-size: 2rem; color: var(--primary-color);">↓</div>
+
+            <div class="loop-step">
+                <h3>5. Verifier Enforces Standards</h3>
+                <p>Automated and human verification. Tests UDC compliance, security, code quality. PASS/PARTIAL/FAIL.</p>
+                <p style="color: var(--muted-text); font-size: 0.9rem; margin-top: 0.5rem;">
+                    Target: >80% first-pass approval rate
+                </p>
+            </div>
+
+            <div style="text-align: center; font-size: 2rem; color: var(--primary-color);">↓</div>
+
+            <div class="loop-step">
+                <h3>6. Deployer Deploys</h3>
+                <p>Automated deployment through Docker + Proxy Manager. Zero-downtime updates. Health verification.</p>
+                <p style="color: var(--muted-text); font-size: 0.9rem; margin-top: 0.5rem;">
+                    Every droplet gets its own subdomain with automatic SSL
+                </p>
+            </div>
+
+            <div style="text-align: center; font-size: 2rem; color: var(--primary-color);">↓</div>
+
+            <div class="loop-step">
+                <h3>7. Registry + Dashboard Update</h3>
+                <p>New droplet registers itself. Dashboard shows it live. System reflects new state automatically.</p>
+                <p style="color: var(--muted-text); font-size: 0.9rem; margin-top: 0.5rem;">
+                    Single Source of Truth always up to date
+                </p>
+            </div>
+
+            <div style="text-align: center; font-size: 2rem; color: var(--primary-color);">↓</div>
+
+            <div class="loop-step" style="border-left-color: var(--secondary-color);">
+                <h3>8. Architect Issues Next Intent</h3>
+                <p>Loop continues. System evolves. Each cycle builds the organism further.</p>
+                <p style="color: var(--muted-text); font-size: 0.9rem; margin-top: 0.5rem;">
+                    Infinite parallelization → 10, 50, 100+ sprints running simultaneously
+                </p>
+            </div>
+
+            <div style="text-align: center; font-size: 3rem; color: var(--secondary-color); margin-top: 2rem;">⟲</div>
+            <p style="text-align: center; color: var(--muted-text); margin-top: 1rem;">The loop continues forever</p>
+        </div>
+
+        <div style="background: var(--dark-surface); border-radius: 12px; padding: 2rem; margin-top: 4rem;">
+            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Why This Works</h3>
+            <ul style="list-style: none; line-height: 2;">
+                <li>✅ <strong>Lightweight:</strong> No heavy coordination, no meetings, no bottlenecks</li>
+                <li>✅ <strong>Asynchronous:</strong> Work happens 24/7, developers in any timezone</li>
+                <li>✅ <strong>File-based:</strong> Everything through GitHub, no real-time dependencies</li>
+                <li>✅ <strong>AI-powered:</strong> Foundation Files enforce quality automatically</li>
+                <li>✅ <strong>Scalable:</strong> Add more Apprentices = linear speed increase</li>
+                <li>✅ <strong>Transparent:</strong> Every piece tracked, every service visible</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin-top: 4rem;">
+            <a href="/live-system" class="btn btn-primary">See It Live</a>
+            <a href="/how-it-works" class="btn btn-secondary">Learn the Architecture</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

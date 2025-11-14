@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero" style="padding: 4rem 2rem;">
+    <div class="container">
+        <h1>How It Works</h1>
+        <p class="tagline">The architecture behind the acceleration</p>
+    </div>
+</div>
+
+<section>
+    <div class="container">
+        <h2>Modular Droplet Architecture</h2>
+        <p style="max-width: 800px; margin: 0 auto 3rem auto; text-align: center; font-size: 1.1rem; color: var(--muted-text);">
+            Full Potential AI is built from standard, interchangeable droplets. Each droplet has a single responsibility,
+            follows the Universal Droplet Contract (UDC), and communicates through well-defined interfaces.
+        </p>
+
+        <div class="grid">
+            <div class="card">
+                <h3>#1 Registry</h3>
+                <p><strong>The Source of Truth</strong></p>
+                <ul style="margin-top: 1rem; line-height: 1.8;">
+                    <li>Identity management</li>
+                    <li>JWT token issuer</li>
+                    <li>Service directory</li>
+                    <li>Status tracking</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>#10 Orchestrator</h3>
+                <p><strong>The Nervous System</strong></p>
+                <ul style="margin-top: 1rem; line-height: 1.8;">
+                    <li>Task routing</li>
+                    <li>Inter-droplet messaging</li>
+                    <li>Heartbeat collection</li>
+                    <li>State coordination</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>#2 Dashboard</h3>
+                <p><strong>The Face (You're Here!)</strong></p>
+                <ul style="margin-top: 1rem; line-height: 1.8;">
+                    <li>Public marketing site</li>
+                    <li>Live system visualization</li>
+                    <li>Real-time status</li>
+                    <li>Investor magnet</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>#3 Proxy Manager</h3>
+                <p><strong>Coming Soon</strong></p>
+                <ul style="margin-top: 1rem; line-height: 1.8;">
+                    <li>Automatic routing</li>
+                    <li>SSL certificates</li>
+                    <li>Domain configuration</li>
+                    <li>Reverse proxy</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>#8 Verifier</h3>
+                <p><strong>Coming Soon</strong></p>
+                <ul style="margin-top: 1rem; line-height: 1.8;">
+                    <li>Automated testing</li>
+                    <li>UDC compliance</li>
+                    <li>Security validation</li>
+                    <li>PASS/FAIL gates</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>#11 Coordinator</h3>
+                <p><strong>Coming Soon</strong></p>
+                <ul style="margin-top: 1rem; line-height: 1.8;">
+                    <li>Sprint management</li>
+                    <li>Package creation</li>
+                    <li>Queue management</li>
+                    <li>Apprentice assignments</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="background: var(--dark-surface); border-radius: 12px; padding: 2rem; margin: 4rem 0;">
+            <h3 style="color: var(--primary-color); margin-bottom: 1.5rem;">Universal Droplet Contract (UDC)</h3>
+            <p style="margin-bottom: 1rem;">
+                Every droplet in the system follows the UDC, which guarantees:
+            </p>
+            <div class="grid">
+                <div>
+                    <h4 style="color: var(--secondary-color); margin-bottom: 0.5rem;">Required Endpoints</h4>
+                    <ul style="list-style: none; line-height: 2;">
+                        <li><code>/health</code> - Service status</li>
+                        <li><code>/capabilities</code> - What it provides</li>
+                        <li><code>/state</code> - Current state</li>
+                        <li><code>/dependencies</code> - What it needs</li>
+                        <li><code>/message</code> - Inter-droplet communication</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: var(--secondary-color); margin-bottom: 0.5rem;">Standard Behaviors</h4>
+                    <ul style="list-style: none; line-height: 2;">
+                        <li>✅ Registers with Registry on startup</li>
+                        <li>✅ Sends heartbeat every 60 seconds</li>
+                        <li>✅ Reports to Dashboard</li>
+                        <li>✅ Follows security requirements</li>
+                        <li>✅ Uses structured logging</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="margin-top: 4rem;">Foundation Files: The System Memory</h2>
+        <p style="max-width: 800px; margin: 0 auto 2rem auto; text-align: center; font-size: 1.1rem; color: var(--muted-text);">
+            Foundation Files are the consciousness of the system. They enforce standards automatically without human memory.
+        </p>
+
+        <div class="grid">
+            <div class="card">
+                <h3>1. UDC Compliance</h3>
+                <p>Required endpoints, response formats, integration protocols</p>
+            </div>
+            <div class="card">
+                <h3>2. Tech Stack</h3>
+                <p>Default technologies (FastAPI, PostgreSQL, Docker) and rationale</p>
+            </div>
+            <div class="card">
+                <h3>3. Security Requirements</h3>
+                <p>JWT authentication, secret management, input validation, SQL injection prevention</p>
+            </div>
+            <div class="card">
+                <h3>4. Code Standards</h3>
+                <p>Python style, type hints, error handling, structured logging, testing requirements</p>
+            </div>
+            <div class="card">
+                <h3>5. Integration Guide</h3>
+                <p>How to connect to Registry, report to Orchestrator, message passing patterns</p>
+            </div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); border-radius: 12px; padding: 3rem; margin: 4rem 0; text-align: center;">
+            <h3 style="font-size: 2rem; margin-bottom: 1rem;">GitHub-First Principle</h3>
+            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto;">
+                The repository is the nucleus, not the developer. All handoffs are file-based.
+                No real-time coordination needed. Infinite parallelization possible.
+            </p>
+        </div>
+
+        <div style="text-align: center; margin-top: 4rem;">
+            <a href="/sacred-loop" class="btn btn-primary">See the Sacred Loop</a>
+            <a href="/live-system" class="btn btn-secondary">View Live System</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

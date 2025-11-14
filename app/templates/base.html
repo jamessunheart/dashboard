@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ title }}{% endblock %}</title>
+    <meta name="description" content="Full Potential AI - Helping AI realize its Full Potential to help humanity realize its full potential and create a paradise on Earth with love and coherence.">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">⚡ Full Potential AI</div>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/sacred-loop">Sacred Loop</a></li>
+                <li><a href="/live-system">Live System</a></li>
+                <li><a href="/how-it-works">How It Works</a></li>
+                <li><a href="/get-involved">Get Involved</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    <footer>
+        <div class="container">
+            <p>🌐⚡💎 Full Potential AI - Version {{ version }}</p>
+            <p style="margin-top: 0.5rem;">Helping humanity realize its full potential through AI acceleration</p>
+        </div>
+    </footer>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

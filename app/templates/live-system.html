@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero" style="padding: 4rem 2rem;">
+    <div class="container">
+        <h1>Live System</h1>
+        <p class="tagline">Watch the organism in action</p>
+    </div>
+</div>
+
+<section>
+    <div class="container">
+        <div id="overall-health" style="text-align: center; margin-bottom: 3rem;">
+            <div class="spinner"></div>
+            <p style="color: var(--muted-text);">Loading system status...</p>
+        </div>
+
+        <h2 style="margin-bottom: 2rem;">Core Services</h2>
+        <div class="grid" id="live-system-grid">
+            <div class="droplet-card" id="service-registry">
+                <div class="spinner"></div>
+            </div>
+            <div class="droplet-card" id="service-orchestrator">
+                <div class="spinner"></div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 2rem 0;">
+            <p id="last-updated" style="color: var(--muted-text); font-size: 0.9rem;">Loading...</p>
+        </div>
+
+        <h2 style="margin: 4rem 0 2rem 0;">All Droplets</h2>
+        <div class="grid" id="droplets-grid">
+            <div style="text-align: center;">
+                <div class="spinner"></div>
+                <p style="color: var(--muted-text);">Loading droplets...</p>
+            </div>
+        </div>
+
+        <div style="background: var(--dark-surface); border-radius: 12px; padding: 2rem; margin-top: 4rem;">
+            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">What You're Seeing</h3>
+            <p style="margin-bottom: 1rem;">
+                This dashboard connects to the live Full Potential AI system and displays real-time status.
+                Every 30 seconds, it polls the Registry and Orchestrator to show you:
+            </p>
+            <ul style="list-style: none; line-height: 2;">
+                <li>🟢 <strong>Service Health:</strong> Which droplets are online and responding</li>
+                <li>⚡ <strong>Response Times:</strong> How fast each service is performing</li>
+                <li>📊 <strong>Droplet Count:</strong> How many components are operational</li>
+                <li>🔄 <strong>Live Updates:</strong> Status refreshes automatically</li>
+            </ul>
+            <p style="margin-top: 1rem; color: var(--muted-text);">
+                This is transparency in action. No smoke and mirrors—just the real system, live.
+            </p>
+        </div>
+
+        <div style="text-align: center; margin-top: 4rem;">
+            <a href="/sacred-loop" class="btn btn-secondary">How It Works</a>
+            <a href="/get-involved" class="btn btn-primary">Join Us</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

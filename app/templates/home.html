@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero">
+    <div class="container">
+        <h1>Full Potential AI</h1>
+        <p class="tagline">The Self-Building, Self-Improving Organism</p>
+
+        <p class="vision">
+            Helping AI realize its Full Potential to help humanity realize its full potential
+            and create a paradise on Earth with love and coherence.
+        </p>
+
+        <div style="margin: 3rem 0;">
+            <h2 style="font-size: 3rem; color: var(--primary-color);">85-95%</h2>
+            <p style="font-size: 1.3rem; color: var(--muted-text);">Time compression on all development</p>
+        </div>
+
+        <div>
+            <a href="/live-system" class="btn btn-primary">See It Live</a>
+            <a href="/get-involved" class="btn btn-secondary">Get Involved</a>
+        </div>
+    </div>
+</div>
+
+<!-- Live Status Widget -->
+<section>
+    <div class="container">
+        <div class="status-widget" id="system-status">
+            <div class="spinner"></div>
+            <p style="text-align: center; color: var(--muted-text);">Loading system status...</p>
+        </div>
+    </div>
+</section>
+
+<!-- Value Propositions -->
+<section style="background: var(--dark-surface);">
+    <div class="container">
+        <h2>What We're Building</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>🔄 The Sacred Loop</h3>
+                <p>A continuous cycle that converts architectural intent into executable systems. From vision to deployment in hours, not weeks.</p>
+                <a href="/sacred-loop" style="color: var(--primary-color); text-decoration: none;">Learn more →</a>
+            </div>
+
+            <div class="card">
+                <h3>⚡ Extreme Acceleration</h3>
+                <p>85-95% time compression through AI-powered development. What took 20-40 hours now takes 4-6 hours.</p>
+            </div>
+
+            <div class="card">
+                <h3>🧠 Self-Organizing System</h3>
+                <p>Modular droplets that build, verify, and deploy themselves. The assembly line builds the assembly line.</p>
+                <a href="/how-it-works" style="color: var(--primary-color); text-decoration: none;">See architecture →</a>
+            </div>
+
+            <div class="card">
+                <h3>🌐 GitHub-First</h3>
+                <p>Every droplet is a repository. Work happens asynchronously. No coordination bottlenecks. Infinite parallelization.</p>
+            </div>
+
+            <div class="card">
+                <h3>✅ Quality Guaranteed</h3>
+                <p>Foundation Files ensure every build is compliant, secure, and tested. 80%+ first-pass approval rate.</p>
+            </div>
+
+            <div class="card">
+                <h3>🚀 Live and Transparent</h3>
+                <p>Watch the system build itself in real-time. Every service reports its health. Complete transparency.</p>
+                <a href="/live-system" style="color: var(--primary-color); text-decoration: none;">View live dashboard →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section>
+    <div class="container" style="text-align: center;">
+        <h2>Join the Evolution</h2>
+        <p style="max-width: 700px; margin: 2rem auto; font-size: 1.2rem; color: var(--muted-text);">
+            We're building the future of AI-accelerated development. Whether you're a developer, investor, or visionary,
+            there's a place for you in this ecosystem.
+        </p>
+        <a href="/get-involved" class="btn btn-primary" style="font-size: 1.2rem; padding: 1.2rem 2.5rem;">Get Involved</a>
+    </div>
+</section>
+{% endblock %}
