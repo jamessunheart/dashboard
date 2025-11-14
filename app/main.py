@@ -161,6 +161,15 @@ async def get_involved(request: Request):
     })
 
 
+@app.get("/paradise-progress", response_class=HTMLResponse)
+async def paradise_progress(request: Request):
+    """Paradise Progress - Journey to coherence dashboard"""
+    return templates.TemplateResponse("paradise-progress.html", {
+        "request": request,
+        "title": "Paradise Progress - Full Potential AI"
+    })
+
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(

@@ -96,3 +96,78 @@ async def get_droplets():
         ]
 
     return droplets
+
+
+@router.get("/paradise-progress")
+async def get_paradise_progress():
+    """
+    Get paradise progress metrics
+    Shows system completion, gaps, and journey to coherence
+    """
+    # Blueprint: 11 core droplets across 4 phases
+    total_droplets = 11
+
+    # Currently built
+    built_droplets = 2  # Registry, Orchestrator
+
+    # Calculate progress
+    progress_percent = round((built_droplets / total_droplets) * 100)
+    gap_count = total_droplets - built_droplets
+
+    # Phase information
+    phase_2_total = 3  # Dashboard, Proxy Manager, Verifier
+    phase_2_built = 0  # Dashboard in progress
+    phase_2_remaining = phase_2_total - phase_2_built
+
+    # Velocity calculation (based on recent progress)
+    # We built 2 droplets in ~1 day, so ~1 droplet/day
+    velocity = "1 droplet/day"
+    days_remaining = gap_count  # At current velocity
+
+    # Estimated completion
+    estimated_completion = f"~{days_remaining} days (Phase 4)"
+
+    return {
+        "progress_percent": progress_percent,
+        "droplets_built": built_droplets,
+        "droplets_total": total_droplets,
+        "gap_count": gap_count,
+        "current_phase": "Phase 2",
+        "velocity": velocity,
+        "next_milestone": "Dashboard",
+        "phase_2_remaining": phase_2_remaining,
+        "estimated_completion": estimated_completion,
+        "coherence_score": progress_percent,  # Same as progress for now
+        "autonomy_level": f"{progress_percent}%"
+    }
+
+
+@router.get("/system-status")
+async def get_system_status_simple():
+    """
+    Simplified system status for paradise-progress page
+    """
+    # Check services
+    registry_status = await registry_client.check_health()
+    orchestrator_status = await orchestrator_client.check_health()
+
+    services = [
+        {
+            "name": "Registry",
+            "status": registry_status.status,
+            "port": 8000,
+            "response_time": registry_status.response_time
+        },
+        {
+            "name": "Orchestrator",
+            "status": orchestrator_status.status,
+            "port": 8001,
+            "response_time": orchestrator_status.response_time
+        }
+    ]
+
+    return {
+        "services": services,
+        "total": len(services),
+        "online": sum(1 for s in services if s["status"] == "online")
+    }
