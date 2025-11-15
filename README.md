@@ -153,3 +153,4 @@ Status updates happen automatically every 30 seconds via JavaScript polling of `
 **Deployment:** http://198.54.123.234:8002 (soon: fullpotential.ai)
 
 🌐⚡💎
+# Automated Deployments Active
