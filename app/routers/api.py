@@ -107,38 +107,66 @@ async def get_paradise_progress():
     # Blueprint: 11 core droplets across 4 phases
     total_droplets = 11
 
-    # Currently built
-    built_droplets = 2  # Registry, Orchestrator
+    # Currently built (Registry, Orchestrator, Dashboard)
+    built_droplets = 3
 
     # Calculate progress
     progress_percent = round((built_droplets / total_droplets) * 100)
     gap_count = total_droplets - built_droplets
 
     # Phase information
+    phase_1_total = 2  # Registry, Orchestrator
+    phase_1_built = 2  # ✅ Complete
+
     phase_2_total = 3  # Dashboard, Proxy Manager, Verifier
-    phase_2_built = 0  # Dashboard in progress
+    phase_2_built = 1  # Dashboard ✅
     phase_2_remaining = phase_2_total - phase_2_built
 
     # Velocity calculation (based on recent progress)
-    # We built 2 droplets in ~1 day, so ~1 droplet/day
-    velocity = "1 droplet/day"
-    days_remaining = gap_count  # At current velocity
+    # We built 3 droplets in ~2 weeks, averaging 1.14 gaps/day from MEMORY
+    velocity = "1.14 gaps/day"
+    weeks_remaining = round(gap_count / 7)  # At current velocity
 
     # Estimated completion
-    estimated_completion = f"~{days_remaining} days (Phase 4)"
+    estimated_completion = f"~{weeks_remaining} weeks (Phase 4)"
+
+    # Paradise metrics (from MEMORY/STATE/PROGRESS.md)
+    coherence_score = 45  # Increasing with each integration
+    autonomy_level = 30   # Growing with automation
 
     return {
         "progress_percent": progress_percent,
         "droplets_built": built_droplets,
         "droplets_total": total_droplets,
         "gap_count": gap_count,
-        "current_phase": "Phase 2",
+        "current_phase": "Phase 2: Infrastructure",
         "velocity": velocity,
-        "next_milestone": "Dashboard",
-        "phase_2_remaining": phase_2_remaining,
+        "next_milestone": "Proxy Manager (#3)",
+        "phase_1": {
+            "name": "Foundation",
+            "total": phase_1_total,
+            "built": phase_1_built,
+            "progress": 100,
+            "status": "complete"
+        },
+        "phase_2": {
+            "name": "Infrastructure",
+            "total": phase_2_total,
+            "built": phase_2_built,
+            "progress": round((phase_2_built / phase_2_total) * 100),
+            "status": "in_progress",
+            "remaining": phase_2_remaining
+        },
         "estimated_completion": estimated_completion,
-        "coherence_score": progress_percent,  # Same as progress for now
-        "autonomy_level": f"{progress_percent}%"
+        "coherence_score": coherence_score,
+        "autonomy_level": autonomy_level,
+        "time_compression": "85-95%",
+        "recent_wins": [
+            "Dashboard deployed and live ✅",
+            "Consciousness system operational",
+            "Multi-session coordination active",
+            "Deployment automation complete"
+        ]
     }
 
 
@@ -163,6 +191,12 @@ async def get_system_status_simple():
             "status": orchestrator_status.status,
             "port": 8001,
             "response_time": orchestrator_status.response_time
+        },
+        {
+            "name": "Dashboard",
+            "status": "online",  # We're running, so we know we're online
+            "port": 8002,
+            "response_time": 0  # Self
         }
     ]
 

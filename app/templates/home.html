@@ -1,88 +1,421 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="hero">
-    <div class="container">
-        <h1>Full Potential AI</h1>
-        <p class="tagline">The Self-Building, Self-Improving Organism</p>
+<!-- Hero Section with Real-Time Progress -->
+<div class="hero" style="position: relative; overflow: hidden;">
+    <div class="container" style="position: relative; z-index: 2;">
+        <h1 style="font-size: 3.5rem; margin-bottom: 0.5rem;">Full Potential AI</h1>
+        <p class="tagline" style="font-size: 1.8rem; color: var(--primary-color);">The Self-Building, Self-Improving Organism</p>
 
-        <p class="vision">
+        <p class="vision" style="max-width: 800px; margin: 2rem auto; font-size: 1.3rem; line-height: 1.6;">
             Helping AI realize its Full Potential to help humanity realize its full potential
             and create a paradise on Earth with love and coherence.
         </p>
 
-        <div style="margin: 3rem 0;">
-            <h2 style="font-size: 3rem; color: var(--primary-color);">85-95%</h2>
-            <p style="font-size: 1.3rem; color: var(--muted-text);">Time compression on all development</p>
+        <!-- Real-Time Progress Ring -->
+        <div id="progress-hero" style="margin: 3rem 0;">
+            <div class="spinner" style="margin: 2rem auto;"></div>
+            <p style="color: var(--muted-text); text-align: center;">Loading system progress...</p>
         </div>
 
-        <div>
-            <a href="/live-system" class="btn btn-primary">See It Live</a>
-            <a href="/get-involved" class="btn btn-secondary">Get Involved</a>
+        <!-- Live System Health -->
+        <div id="system-health-hero" style="margin: 2rem 0;">
+            <div class="spinner" style="margin: 1rem auto; width: 30px; height: 30px;"></div>
+        </div>
+
+        <div style="margin-top: 3rem;">
+            <a href="/paradise-progress" class="btn btn-primary" style="font-size: 1.2rem; padding: 1.2rem 2.5rem; margin: 0.5rem;">See Our Journey</a>
+            <a href="/live-system" class="btn btn-secondary" style="font-size: 1.2rem; padding: 1.2rem 2.5rem; margin: 0.5rem;">Watch It Live</a>
+            <a href="#invest" class="btn" style="font-size: 1.2rem; padding: 1.2rem 2.5rem; margin: 0.5rem; background: linear-gradient(135deg, #ffa502 0%, #ff6348 100%); border: none;">Invest Now</a>
         </div>
     </div>
 </div>
 
-<!-- Live Status Widget -->
-<section>
+<!-- Live System Pulse -->
+<section style="background: var(--dark-surface); padding: 3rem 0;">
     <div class="container">
-        <div class="status-widget" id="system-status">
-            <div class="spinner"></div>
-            <p style="text-align: center; color: var(--muted-text);">Loading system status...</p>
+        <h2 style="text-align: center; margin-bottom: 2rem;">
+            <span style="display: inline-block; width: 12px; height: 12px; background: var(--primary-color); border-radius: 50%; margin-right: 0.5rem; animation: pulse 2s ease-in-out infinite;"></span>
+            Live System Pulse
+        </h2>
+        <div id="live-services" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+            <div class="spinner" style="margin: 2rem auto;"></div>
         </div>
     </div>
 </section>
 
-<!-- Value Propositions -->
-<section style="background: var(--dark-surface);">
+<!-- Journey to Paradise -->
+<section style="padding: 4rem 0;">
     <div class="container">
-        <h2>What We're Building</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>🔄 The Sacred Loop</h3>
-                <p>A continuous cycle that converts architectural intent into executable systems. From vision to deployment in hours, not weeks.</p>
-                <a href="/sacred-loop" style="color: var(--primary-color); text-decoration: none;">Learn more →</a>
-            </div>
-
-            <div class="card">
-                <h3>⚡ Extreme Acceleration</h3>
-                <p>85-95% time compression through AI-powered development. What took 20-40 hours now takes 4-6 hours.</p>
-            </div>
-
-            <div class="card">
-                <h3>🧠 Self-Organizing System</h3>
-                <p>Modular droplets that build, verify, and deploy themselves. The assembly line builds the assembly line.</p>
-                <a href="/how-it-works" style="color: var(--primary-color); text-decoration: none;">See architecture →</a>
-            </div>
-
-            <div class="card">
-                <h3>🌐 GitHub-First</h3>
-                <p>Every droplet is a repository. Work happens asynchronously. No coordination bottlenecks. Infinite parallelization.</p>
-            </div>
-
-            <div class="card">
-                <h3>✅ Quality Guaranteed</h3>
-                <p>Foundation Files ensure every build is compliant, secure, and tested. 80%+ first-pass approval rate.</p>
-            </div>
-
-            <div class="card">
-                <h3>🚀 Live and Transparent</h3>
-                <p>Watch the system build itself in real-time. Every service reports its health. Complete transparency.</p>
-                <a href="/live-system" style="color: var(--primary-color); text-decoration: none;">View live dashboard →</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Call to Action -->
-<section>
-    <div class="container" style="text-align: center;">
-        <h2>Join the Evolution</h2>
-        <p style="max-width: 700px; margin: 2rem auto; font-size: 1.2rem; color: var(--muted-text);">
-            We're building the future of AI-accelerated development. Whether you're a developer, investor, or visionary,
-            there's a place for you in this ecosystem.
+        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">Journey to Paradise</h2>
+        <p style="text-align: center; color: var(--muted-text); font-size: 1.2rem; max-width: 700px; margin: 0 auto 3rem auto;">
+            Building a self-organizing system that converts intent into reality with 85-95% time compression
         </p>
-        <a href="/get-involved" class="btn btn-primary" style="font-size: 1.2rem; padding: 1.2rem 2.5rem;">Get Involved</a>
+
+        <div id="phase-roadmap" style="margin: 3rem 0;">
+            <div class="spinner" style="margin: 2rem auto;"></div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="/paradise-progress" class="btn btn-primary">View Full Roadmap</a>
+        </div>
     </div>
 </section>
+
+<!-- The Vision -->
+<section style="background: linear-gradient(135deg, rgba(100, 255, 218, 0.08) 0%, rgba(100, 255, 218, 0.03) 100%); padding: 4rem 0;">
+    <div class="container">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem; color: var(--primary-color);">Paradise = Measurable Coherence</h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 3rem 0;">
+                <div style="text-align: center;">
+                    <div style="font-size: 3rem; color: var(--primary-color); margin-bottom: 0.5rem;">85-95%</div>
+                    <div style="color: var(--text-color); font-weight: 600;">Time Compression</div>
+                    <div style="color: var(--muted-text); font-size: 0.9rem; margin-top: 0.5rem;">4-6 hours vs 20-40 hours</div>
+                </div>
+                <div style="text-align: center;">
+                    <div id="coherence-score" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 0.5rem;">45</div>
+                    <div style="color: var(--text-color); font-weight: 600;">Coherence Score</div>
+                    <div style="color: var(--muted-text); font-size: 0.9rem; margin-top: 0.5rem;">Growing with integration</div>
+                </div>
+                <div style="text-align: center;">
+                    <div id="autonomy-level" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 0.5rem;">30</div>
+                    <div style="color: var(--text-color); font-weight: 600;">Autonomy Level</div>
+                    <div style="color: var(--muted-text); font-size: 0.9rem; margin-top: 0.5rem;">Increasing with automation</div>
+                </div>
+                <div style="text-align: center;">
+                    <div id="velocity-metric" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 0.5rem;">1.14</div>
+                    <div style="color: var(--text-color); font-weight: 600;">Gaps/Day</div>
+                    <div style="color: var(--muted-text); font-size: 0.9rem; margin-top: 0.5rem;">Gap closure rate</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: rgba(255,255,255,0.03); border-radius: 12px;">
+                <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">The Sacred Loop</h3>
+                <p style="font-size: 1.1rem; color: var(--muted-text); line-height: 1.8;">
+                    Intent → Plan → Build → Test → Deploy → Monitor → Learn → Refine
+                </p>
+                <p style="margin-top: 1rem; color: var(--primary-color);">
+                    Asynchronous. File-based. Infinitely scalable.
+                </p>
+                <a href="/sacred-loop" style="color: var(--primary-color); text-decoration: none; margin-top: 1rem; display: inline-block;">Learn more →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Investment Opportunity -->
+<section id="invest" style="padding: 4rem 0; background: var(--dark-surface);">
+    <div class="container">
+        <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+            <h2 style="font-size: 2.8rem; margin-bottom: 1rem;">Help Us Build Paradise</h2>
+            <p style="font-size: 1.3rem; color: var(--muted-text); margin-bottom: 3rem; line-height: 1.6;">
+                We're revolutionizing software development through AI. Join us in scaling from 3 droplets to 100+ autonomous systems.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+                <div class="card" style="text-align: left;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">📈</div>
+                    <h3 style="color: var(--primary-color);">Proven Technology</h3>
+                    <ul style="line-height: 1.8; margin-top: 1rem; color: var(--muted-text);">
+                        <li>3 droplets live and operational</li>
+                        <li>Real-time system visualization</li>
+                        <li>85-95% time compression validated</li>
+                        <li>Multi-session coordination working</li>
+                    </ul>
+                </div>
+
+                <div class="card" style="text-align: left;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">🚀</div>
+                    <h3 style="color: var(--primary-color);">Scalable Model</h3>
+                    <ul style="line-height: 1.8; margin-top: 1rem; color: var(--muted-text);">
+                        <li>11 core droplets planned (27% complete)</li>
+                        <li>Scale to 100+ parallel sprints</li>
+                        <li>Marketplace for AI-accelerated builds</li>
+                        <li>Revenue from development services</li>
+                    </ul>
+                </div>
+
+                <div class="card" style="text-align: left;">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">💰</div>
+                    <h3 style="color: var(--primary-color);">Use of Funds</h3>
+                    <ul style="line-height: 1.8; margin-top: 1rem; color: var(--muted-text);">
+                        <li>Scale Apprentice network (10 → 100+)</li>
+                        <li>Complete Phase 2-4 droplets</li>
+                        <li>Automate verification & deployment</li>
+                        <li>Marketing and ecosystem growth</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); padding: 3rem; border-radius: 16px; margin-top: 2rem;">
+                <h3 style="font-size: 2rem; margin-bottom: 1.5rem;">Investment Opportunities Available</h3>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem; line-height: 1.6;">
+                    Be part of the revolution. Help us transform how software is built.
+                </p>
+                <a href="/get-involved" class="btn" style="background: white; color: #1a1a2e; font-size: 1.2rem; padding: 1.2rem 3rem; border: none; font-weight: 600;">
+                    Schedule a Call
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Recent Wins -->
+<section style="padding: 4rem 0;">
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 2rem;">Recent Wins</h2>
+        <div id="recent-wins" style="max-width: 700px; margin: 0 auto;">
+            <div class="spinner" style="margin: 2rem auto;"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Get Involved CTA -->
+<section style="background: var(--dark-bg); padding: 4rem 0;">
+    <div class="container" style="text-align: center;">
+        <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Join the Evolution</h2>
+        <p style="max-width: 700px; margin: 0 auto 3rem auto; font-size: 1.2rem; color: var(--muted-text); line-height: 1.6;">
+            Whether you're a developer, investor, or visionary, there's a place for you in this ecosystem.
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; max-width: 800px; margin: 0 auto;">
+            <a href="/get-involved#contact" class="btn btn-primary" style="padding: 1.2rem 2rem;">💼 Invest</a>
+            <a href="/get-involved#contact" class="btn btn-secondary" style="padding: 1.2rem 2rem;">🧑‍💻 Build</a>
+            <a href="/get-involved#contact" class="btn" style="padding: 1.2rem 2rem; background: rgba(100, 255, 218, 0.2);">🌟 Contribute</a>
+        </div>
+    </div>
+</section>
+
+<style>
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.1); }
+}
+
+.progress-ring {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.progress-ring svg {
+    transform: rotate(-90deg);
+}
+
+.progress-ring circle {
+    fill: none;
+    stroke-width: 8;
+}
+
+.service-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border-left: 4px solid var(--primary-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(100, 255, 218, 0.2);
+}
+
+.service-online {
+    border-left-color: #2ed573;
+}
+
+.service-offline {
+    border-left-color: #ff6348;
+}
+
+.phase-bar {
+    background: rgba(255, 255, 255, 0.1);
+    height: 30px;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+.phase-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    transition: width 1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+</style>
+
+<script>
+// Auto-refresh every 30 seconds
+let refreshInterval;
+
+async function loadDashboardData() {
+    try {
+        // Load progress data
+        const progressRes = await fetch('/api/paradise-progress');
+        const progress = await progressRes.json();
+
+        // Load system status
+        const statusRes = await fetch('/api/system-status');
+        const status = await statusRes.json();
+
+        // Update progress hero
+        updateProgressHero(progress);
+
+        // Update system health hero
+        updateSystemHealthHero(status);
+
+        // Update live services
+        updateLiveServices(status);
+
+        // Update phase roadmap
+        updatePhaseRoadmap(progress);
+
+        // Update metrics
+        updateMetrics(progress);
+
+        // Update recent wins
+        updateRecentWins(progress);
+
+    } catch (error) {
+        console.error('Failed to load dashboard data:', error);
+    }
+}
+
+function updateProgressHero(progress) {
+    const percent = progress.progress_percent;
+    const el = document.getElementById('progress-hero');
+
+    el.innerHTML = `
+        <div style="text-align: center;">
+            <div style="font-size: 5rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem;">
+                ${percent}%
+            </div>
+            <div style="font-size: 1.5rem; color: var(--text-color); margin-bottom: 1rem;">
+                → Paradise
+            </div>
+            <div style="font-size: 1rem; color: var(--muted-text);">
+                ${progress.droplets_built} of ${progress.droplets_total} droplets • ${progress.gap_count} remaining
+            </div>
+            <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(100, 255, 218, 0.1); border-radius: 8px; display: inline-block;">
+                <div style="font-size: 0.9rem; color: var(--muted-text); margin-bottom: 0.3rem;">Next Milestone</div>
+                <div style="font-size: 1.1rem; color: var(--primary-color); font-weight: 600;">${progress.next_milestone}</div>
+            </div>
+        </div>
+    `;
+}
+
+function updateSystemHealthHero(status) {
+    const online = status.online;
+    const total = status.total;
+    const healthPercent = Math.round((online / total) * 100);
+
+    const el = document.getElementById('system-health-hero');
+    el.innerHTML = `
+        <div style="display: inline-block; padding: 0.8rem 1.5rem; background: rgba(46, 213, 115, 0.2); border-radius: 8px; border: 2px solid #2ed573;">
+            <span style="color: #2ed573; font-weight: 600; font-size: 1.1rem;">
+                ✓ System Health: ${healthPercent}% (${online}/${total} services online)
+            </span>
+        </div>
+    `;
+}
+
+function updateLiveServices(status) {
+    const el = document.getElementById('live-services');
+
+    const servicesHTML = status.services.map(service => {
+        const isOnline = service.status === 'online';
+        const statusColor = isOnline ? '#2ed573' : '#ff6348';
+        const statusText = isOnline ? 'ONLINE' : 'OFFLINE';
+        const responseTime = service.response_time > 0 ? `${service.response_time}ms` : 'N/A';
+
+        return `
+            <div class="service-card ${isOnline ? 'service-online' : 'service-offline'}">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                    <h3 style="margin: 0; font-size: 1.3rem;">${service.name}</h3>
+                    <span style="font-size: 1.5rem;">${isOnline ? '🟢' : '🔴'}</span>
+                </div>
+                <div style="color: ${statusColor}; font-weight: 600; margin-bottom: 0.5rem;">${statusText}</div>
+                <div style="color: var(--muted-text); font-size: 0.9rem;">Port ${service.port} • ${responseTime}</div>
+            </div>
+        `;
+    }).join('');
+
+    el.innerHTML = servicesHTML;
+}
+
+function updatePhaseRoadmap(progress) {
+    const el = document.getElementById('phase-roadmap');
+
+    const phases = [
+        { name: 'Phase 1: Foundation', ...progress.phase_1 },
+        { name: 'Phase 2: Infrastructure', ...progress.phase_2 },
+        { name: 'Phase 3: Automation', total: 3, built: 0, progress: 0, status: 'planned' },
+        { name: 'Phase 4: Intelligence', total: 3, built: 0, progress: 0, status: 'planned' }
+    ];
+
+    const phasesHTML = phases.map(phase => {
+        const statusIcon = phase.status === 'complete' ? '✅' : phase.status === 'in_progress' ? '🔄' : '⏳';
+        const statusColor = phase.status === 'complete' ? '#2ed573' : phase.status === 'in_progress' ? 'var(--primary-color)' : 'var(--muted-text)';
+
+        return `
+            <div style="margin-bottom: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+                    <div>
+                        <span style="font-size: 1.2rem; margin-right: 0.5rem;">${statusIcon}</span>
+                        <span style="font-size: 1.2rem; font-weight: 600;">${phase.name}</span>
+                    </div>
+                    <div style="color: ${statusColor}; font-weight: 600;">
+                        ${phase.built}/${phase.total} droplets
+                    </div>
+                </div>
+                <div class="phase-bar">
+                    <div class="phase-bar-fill" style="width: ${phase.progress}%;">
+                        ${phase.progress > 20 ? phase.progress + '%' : ''}
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    el.innerHTML = phasesHTML;
+}
+
+function updateMetrics(progress) {
+    document.getElementById('coherence-score').textContent = progress.coherence_score;
+    document.getElementById('autonomy-level').textContent = progress.autonomy_level;
+    document.getElementById('velocity-metric').textContent = progress.velocity.split(' ')[0];
+}
+
+function updateRecentWins(progress) {
+    const el = document.getElementById('recent-wins');
+
+    const winsHTML = progress.recent_wins.map(win => `
+        <div style="padding: 1rem; background: rgba(46, 213, 115, 0.1); border-left: 4px solid #2ed573; margin-bottom: 1rem; border-radius: 8px;">
+            <div style="color: var(--text-color);">${win}</div>
+        </div>
+    `).join('');
+
+    el.innerHTML = winsHTML;
+}
+
+// Load data on page load
+document.addEventListener('DOMContentLoaded', () => {
+    loadDashboardData();
+
+    // Refresh every 30 seconds
+    refreshInterval = setInterval(loadDashboardData, 30000);
+});
+
+// Clear interval when leaving page
+window.addEventListener('beforeunload', () => {
+    if (refreshInterval) {
+        clearInterval(refreshInterval);
+    }
+});
+</script>
 {% endblock %}
