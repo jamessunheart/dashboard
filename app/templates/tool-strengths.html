@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+<section style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 2rem;">
+    <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div>
+                <h1 style="margin-bottom: 0.5rem;">💎 Strengths Finder</h1>
+                <p style="color: var(--muted-text);">Discover your natural talents</p>
+            </div>
+            <a href="/dashboard" class="btn btn-secondary">← Dashboard</a>
+        </div>
+    </div>
+</section>
+<section style="padding: 3rem 2rem;">
+    <div class="container" style="max-width: 900px; margin: 0 auto;">
+        <div class="card" style="padding: 3rem; text-align: center;">
+            <h2 style="margin-bottom: 2rem;">Strengths Assessment</h2>
+            <p style="color: var(--muted-text); margin-bottom: 3rem; line-height: 1.8;">
+                Quick 5-question assessment to identify your core strengths. Coming soon: Full 50-question assessment with detailed report.
+            </p>
+            <div style="text-align: left; max-width: 600px; margin: 0 auto;">
+                <div style="margin-bottom: 2rem; padding: 2rem; background: var(--dark-surface); border-radius: 8px;">
+                    <h3 style="margin-bottom: 1rem;">Your Current Strengths Profile</h3>
+                    <div style="margin: 1rem 0;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span>Leadership</span><span style="color: var(--primary-color);">85%</span>
+                        </div>
+                        <div style="width: 100%; height: 8px; background: #0d0d1a; border-radius: 4px;">
+                            <div style="width: 85%; height: 100%; background: var(--primary-color); border-radius: 4px;"></div>
+                        </div>
+                    </div>
+                    <div style="margin: 1rem 0;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span>Strategic Thinking</span><span style="color: var(--primary-color);">78%</span>
+                        </div>
+                        <div style="width: 100%; height: 8px; background: #0d0d1a; border-radius: 4px;">
+                            <div style="width: 78%; height: 100%; background: var(--primary-color); border-radius: 4px;"></div>
+                        </div>
+                    </div>
+                    <div style="margin: 1rem 0;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span>Execution</span><span style="color: var(--primary-color);">72%</span>
+                        </div>
+                        <div style="width: 100%; height: 8px; background: #0d0d1a; border-radius: 4px;">
+                            <div style="width: 72%; height: 100%; background: var(--primary-color); border-radius: 4px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" style="width: 100%; padding: 1rem;" onclick="alert('Full assessment coming soon! This will include 50 questions and a detailed PDF report.')">
+                    Take Full Assessment →
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

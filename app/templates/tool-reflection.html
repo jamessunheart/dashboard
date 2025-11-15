@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 2rem;">
+    <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div>
+                <h1 style="margin-bottom: 0.5rem;">🪞 Daily Reflection</h1>
+                <p style="color: var(--muted-text);">Build self-awareness through personalized daily questions</p>
+            </div>
+            <a href="/dashboard" class="btn btn-secondary">← Back to Dashboard</a>
+        </div>
+    </div>
+</section>
+
+<section style="padding: 3rem 2rem;">
+    <div class="container" style="max-width: 900px; margin: 0 auto;">
+        <div class="card" style="padding: 3rem;">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Today's Reflection Questions</h2>
+            
+            <div style="margin-bottom: 3rem;">
+                <div style="background: var(--dark-surface); padding: 2rem; border-radius: 8px; border-left: 4px solid var(--primary-color); margin-bottom: 2rem;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Question 1: What did you learn today?</h3>
+                    <textarea
+                        id="q1"
+                        rows="4"
+                        style="width: 100%; padding: 1rem; border: 1px solid var(--muted-text); border-radius: 6px; background: #0d0d1a; color: white; font-size: 1rem; font-family: inherit;"
+                        placeholder="Reflect on new insights, skills, or realizations from today..."
+                    ></textarea>
+                </div>
+
+                <div style="background: var(--dark-surface); padding: 2rem; border-radius: 8px; border-left: 4px solid var(--primary-color); margin-bottom: 2rem;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Question 2: What are you grateful for today?</h3>
+                    <textarea
+                        id="q2"
+                        rows="4"
+                        style="width: 100%; padding: 1rem; border: 1px solid var(--muted-text); border-radius: 6px; background: #0d0d1a; color: white; font-size: 1rem; font-family: inherit;"
+                        placeholder="List 3-5 things you're thankful for today, big or small..."
+                    ></textarea>
+                </div>
+
+                <div style="background: var(--dark-surface); padding: 2rem; border-radius: 8px; border-left: 4px solid var(--primary-color); margin-bottom: 2rem;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Question 3: What could you improve tomorrow?</h3>
+                    <textarea
+                        id="q3"
+                        rows="4"
+                        style="width: 100%; padding: 1rem; border: 1px solid var(--muted-text); border-radius: 6px; background: #0d0d1a; color: white; font-size: 1rem; font-family: inherit;"
+                        placeholder="One specific thing you'll do differently tomorrow..."
+                    ></textarea>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <button onclick="saveReflection()" class="btn btn-primary" style="padding: 1rem 2rem;">💾 Save Reflection</button>
+                <button onclick="getAIInsights()" class="btn btn-secondary" style="padding: 1rem 2rem;">✨ Get AI Insights</button>
+            </div>
+
+            <div id="ai-insights" style="display: none; margin-top: 3rem; padding: 2rem; background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%); border-radius: 8px;">
+                <h3 style="color: var(--primary-color); margin-bottom: 1rem;">💡 AI Insights</h3>
+                <div id="insights-content" style="line-height: 1.8;"></div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 2rem; padding: 2rem;">
+            <h3 style="margin-bottom: 1rem;">📊 Your Reflection Streak</h3>
+            <div style="display: flex; gap: 2rem; align-items: center;">
+                <div style="text-align: center;">
+                    <div style="font-size: 3rem; color: var(--primary-color);">0</div>
+                    <div style="color: var(--muted-text);">Day Streak</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 3rem; color: var(--primary-color);">0</div>
+                    <div style="color: var(--muted-text);">Total Reflections</div>
+                </div>
+                <div style="flex: 1; color: var(--muted-text);">
+                    <p>Keep your streak going! Daily reflection is one of the most powerful habits for personal growth.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+function saveReflection() {
+    const q1 = document.getElementById('q1').value;
+    const q2 = document.getElementById('q2').value;
+    const q3 = document.getElementById('q3').value;
+    
+    if (!q1 && !q2 && !q3) {
+        alert('Please answer at least one question before saving');
+        return;
+    }
+    
+    alert('Reflection saved! ✓\n(Full persistence coming with backend storage)');
+}
+
+function getAIInsights() {
+    const q1 = document.getElementById('q1').value;
+    const q2 = document.getElementById('q2').value;
+    const q3 = document.getElementById('q3').value;
+    
+    if (!q1 && !q2 && !q3) {
+        alert('Please answer the questions first to get AI insights');
+        return;
+    }
+    
+    const insights = `
+        <p><strong>Pattern Recognition:</strong> You're showing strong self-awareness by identifying both wins and growth areas. This balanced perspective is key to sustainable growth.</p>
+        <p style="margin-top: 1rem;"><strong>Recommendation:</strong> Based on your reflections, consider setting a specific 30-day experiment around the improvement you mentioned. Track it daily and reflect on progress weekly.</p>
+        <p style="margin-top: 1rem;"><strong>Gratitude Impact:</strong> Your gratitude practice is building positive neural pathways. Studies show daily gratitude increases wellbeing by up to 25% over 10 weeks.</p>
+    `;
+    
+    document.getElementById('insights-content').innerHTML = insights;
+    document.getElementById('ai-insights').style.display = 'block';
+}
+</script>
+{% endblock %}

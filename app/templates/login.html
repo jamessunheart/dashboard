@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section style="padding: 4rem 2rem; min-height: 70vh; display: flex; align-items: center;">
+    <div class="container" style="max-width: 450px; margin: 0 auto;">
+        <div class="card" style="padding: 3rem;">
+            <h1 style="text-align: center; margin-bottom: 0.5rem;">Welcome Back</h1>
+            <p style="text-align: center; color: var(--muted-text); margin-bottom: 2rem;">
+                Log in to continue your journey
+            </p>
+
+            {% if error %}
+            <div style="background: #ff4444; color: white; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; text-align: center;">
+                {{ error }}
+            </div>
+            {% endif %}
+
+            <form method="POST" action="/login">
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Email</label>
+                    <input
+                        type="email"
+                        name="email"
+                        value="{{ email or '' }}"
+                        required
+                        style="width: 100%; padding: 0.75rem; border: 1px solid var(--muted-text); border-radius: 6px; background: var(--dark-surface); color: white; font-size: 1rem;"
+                        placeholder="you@example.com"
+                        autofocus
+                    >
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Password</label>
+                    <input
+                        type="password"
+                        name="password"
+                        required
+                        style="width: 100%; padding: 0.75rem; border: 1px solid var(--muted-text); border-radius: 6px; background: var(--dark-surface); color: white; font-size: 1rem;"
+                        placeholder="Your password"
+                    >
+                </div>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                    style="width: 100%; margin-top: 1rem; font-size: 1.1rem; padding: 1rem;"
+                >
+                    Log In
+                </button>
+            </form>
+
+            <p style="text-align: center; margin-top: 2rem; color: var(--muted-text);">
+                Don't have an account?
+                <a href="/membership#pricing" style="color: var(--primary-color); text-decoration: none;">Sign up</a>
+            </p>
+        </div>
+    </div>
+</section>
+{% endblock %}

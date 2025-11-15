@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Dashboard Header -->
+<section style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 3rem 2rem;">
+    <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div>
+                <h1 style="margin-bottom: 0.5rem;">Welcome back, {{ user.full_name.split()[0] }}!</h1>
+                <p style="color: var(--muted-text);">
+                    {% if user.membership_tier == 'seeker' %}
+                        🌱 Seeker Member
+                    {% elif user.membership_tier == 'builder' %}
+                        ⚡ Builder Member
+                    {% elif user.membership_tier == 'master' %}
+                        🚀 Master Member
+                    {% endif %}
+                </p>
+            </div>
+            <div>
+                <a href="/logout" class="btn btn-secondary">Logout</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Stats -->
+<section style="background: var(--dark-surface); padding: 2rem;">
+    <div class="container">
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+            <div class="card" style="text-align: center; padding: 1.5rem;">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">📈</div>
+                <h3 style="color: var(--primary-color); font-size: 2rem; margin-bottom: 0.25rem;">0</h3>
+                <p style="color: var(--muted-text); font-size: 0.9rem;">Days Active</p>
+            </div>
+            <div class="card" style="text-align: center; padding: 1.5rem;">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">✓</div>
+                <h3 style="color: var(--primary-color); font-size: 2rem; margin-bottom: 0.25rem;">0</h3>
+                <p style="color: var(--muted-text); font-size: 0.9rem;">Challenges Completed</p>
+            </div>
+            <div class="card" style="text-align: center; padding: 1.5rem;">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔥</div>
+                <h3 style="color: var(--primary-color); font-size: 2rem; margin-bottom: 0.25rem;">0</h3>
+                <p style="color: var(--muted-text); font-size: 0.9rem;">Day Streak</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AI Tools -->
+<section style="padding: 3rem 2rem;">
+    <div class="container">
+        <h2 style="margin-bottom: 2rem;">Your AI-Powered Tools</h2>
+
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+            <!-- Goal Setting Assistant -->
+            <div class="card" style="cursor: pointer; transition: transform 0.2s;" onclick="window.location='/tools/goals'">
+                <div style="display: flex; align-items: start; gap: 1.5rem;">
+                    <div style="font-size: 3rem;">🎯</div>
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 0.5rem;">Goal Setting Assistant</h3>
+                        <p style="color: var(--muted-text); margin-bottom: 1rem;">
+                            Clarify your goals and create actionable roadmaps with AI guidance
+                        </p>
+                        <a href="/tools/goals" class="btn btn-primary" style="display: inline-block;">
+                            Launch Tool →
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Daily Reflection -->
+            <div class="card" style="cursor: pointer; transition: transform 0.2s;" onclick="window.location='/tools/reflection'">
+                <div style="display: flex; align-items: start; gap: 1.5rem;">
+                    <div style="font-size: 3rem;">🪞</div>
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 0.5rem;">Daily Reflection</h3>
+                        <p style="color: var(--muted-text); margin-bottom: 1rem;">
+                            Build self-awareness with personalized daily questions
+                        </p>
+                        <a href="/tools/reflection" class="btn btn-primary" style="display: inline-block;">
+                            Launch Tool →
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Strengths Finder -->
+            <div class="card" style="cursor: pointer; transition: transform 0.2s;" onclick="window.location='/tools/strengths'">
+                <div style="display: flex; align-items: start; gap: 1.5rem;">
+                    <div style="font-size: 3rem;">💎</div>
+                    <div style="flex: 1;">
+                        <h3 style="margin-bottom: 0.5rem;">Strengths Finder</h3>
+                        <p style="color: var(--muted-text); margin-bottom: 1rem;">
+                            Discover your natural talents and how to leverage them
+                        </p>
+                        <a href="/tools/strengths" class="btn btn-primary" style="display: inline-block;">
+                            Launch Tool →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- This Week's Challenge -->
+<section style="background: var(--dark-surface); padding: 3rem 2rem;">
+    <div class="container" style="max-width: 800px;">
+        <h2 style="margin-bottom: 1.5rem;">📅 This Week's Challenge</h2>
+        <div class="card" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 2rem;">
+            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Morning Clarity Practice</h3>
+            <p style="margin-bottom: 1.5rem; line-height: 1.8;">
+                This week, spend 10 minutes each morning writing down your top 3 priorities for the day
+                and why they matter. Use the Daily Reflection tool to process your insights at the end of each day.
+            </p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <button class="btn btn-primary">Mark as Complete</button>
+                <a href="/tools/reflection" class="btn btn-secondary">Use Reflection Tool</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Resources -->
+{% if user.membership_tier in ['builder', 'master'] %}
+<section style="padding: 3rem 2rem;">
+    <div class="container">
+        <h2 style="margin-bottom: 2rem;">📚 Member Resources</h2>
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+            <div class="card">
+                <h3>🌐 Community</h3>
+                <p style="color: var(--muted-text); margin: 1rem 0;">
+                    Connect with fellow members, share wins, and get support
+                </p>
+                <a href="/community" class="btn btn-secondary">Join Discussion →</a>
+            </div>
+
+            {% if user.membership_tier == 'master' %}
+            <div class="card">
+                <h3>🎯 1-on-1 Coaching</h3>
+                <p style="color: var(--muted-text); margin: 1rem 0;">
+                    Schedule your quarterly strategy session
+                </p>
+                <a href="/coaching" class="btn btn-secondary">Book Session →</a>
+            </div>
+
+            <div class="card">
+                <h3>📞 Group Calls</h3>
+                <p style="color: var(--muted-text); margin: 1rem 0;">
+                    Join our monthly live coaching calls
+                </p>
+                <a href="/calls" class="btn btn-secondary">View Schedule →</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<style>
+.card:hover {
+    transform: translateY(-2px);
+    transition: transform 0.2s;
+}
+</style>
+{% endblock %}

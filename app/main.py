@@ -14,7 +14,8 @@ import logging
 from pathlib import Path
 
 from app.config import settings
-from app.routers import udc, api
+from app.routers import udc, api, auth, tools
+from app.routers.auth import get_current_user
 from app.services.registry_client import registry_client
 
 # Configure logging (follows CODE_STANDARDS.md - structured logging)
@@ -112,6 +113,8 @@ templates = Jinja2Templates(directory=str(templates_path))
 # Include routers
 app.include_router(udc.router, tags=["UDC"])
 app.include_router(api.router, tags=["API"])
+app.include_router(auth.router, tags=["Auth"])
+app.include_router(tools.router, tags=["Tools"])
 
 
 # Web Routes
@@ -167,6 +170,30 @@ async def paradise_progress(request: Request):
     return templates.TemplateResponse("paradise-progress.html", {
         "request": request,
         "title": "Paradise Progress - Full Potential AI"
+    })
+
+
+@app.get("/membership", response_class=HTMLResponse)
+async def membership(request: Request):
+    """Membership landing page - Full Potential personal growth subscription"""
+    return templates.TemplateResponse("membership.html", {
+        "request": request,
+        "title": "Full Potential Membership - Unlock Your Potential with AI"
+    })
+
+
+@app.get("/dashboard", response_class=HTMLResponse)
+async def dashboard(request: Request):
+    """Member dashboard - requires authentication"""
+    user = get_current_user(request)
+
+    if not user:
+        return RedirectResponse(url="/login", status_code=303)
+
+    return templates.TemplateResponse("dashboard.html", {
+        "request": request,
+        "title": "Dashboard - Full Potential",
+        "user": user
     })
 
 

@@ -1,3 +1,22 @@
+#!/bin/bash
+# Deploy Vision/Mission/Values update to Dashboard
+# Copy this entire script and run it ON THE SERVER (198.54.123.234)
+
+set -e
+
+echo "🚀 Deploying Vision/Mission/Values Update to Dashboard"
+echo "========================================================"
+echo ""
+
+cd /opt/fpai/apps/dashboard/dashboard
+
+# Backup current file
+echo "📦 Creating backup..."
+cp app/templates/paradise-progress.html app/templates/paradise-progress.html.backup.$(date +%Y%m%d_%H%M%S)
+
+# Update the file with new Vision/Mission/Values content
+echo "✏️  Updating paradise-progress.html..."
+cat > app/templates/paradise-progress.html << 'TEMPLATE_EOF'
 {% extends "base.html" %}
 
 {% block content %}
@@ -370,3 +389,32 @@ loadParadiseProgress();
 setInterval(loadParadiseProgress, 30000);
 </script>
 {% endblock %}
+TEMPLATE_EOF
+
+echo "✅ File updated successfully!"
+echo ""
+
+# Check if running via systemd or Docker
+if systemctl is-active --quiet dashboard 2>/dev/null; then
+    echo "🔄 Restarting dashboard service (systemd)..."
+    systemctl restart dashboard
+    sleep 2
+    systemctl status dashboard --no-pager -l | head -15
+elif docker ps | grep -q dashboard; then
+    echo "🔄 Restarting dashboard container (Docker)..."
+    docker restart dashboard
+    sleep 2
+    docker ps | grep dashboard
+else
+    echo "⚠️  Could not detect service type. Please restart manually:"
+    echo "   systemctl restart dashboard  (if using systemd)"
+    echo "   docker restart dashboard     (if using Docker)"
+fi
+
+echo ""
+echo "✅ Deployment Complete!"
+echo ""
+echo "🌐 Check the updates at:"
+echo "   http://dashboard.fullpotential.com:8002/paradise-progress"
+echo ""
+echo "Vision, Mission, and Core Values are now live! 🌟"

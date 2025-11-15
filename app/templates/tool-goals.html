@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 2rem;">
+    <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div>
+                <h1 style="margin-bottom: 0.5rem;">🎯 Goal Setting Assistant</h1>
+                <p style="color: var(--muted-text);">AI-powered guidance to clarify and achieve your goals</p>
+            </div>
+            <a href="/dashboard" class="btn btn-secondary">← Back to Dashboard</a>
+        </div>
+    </div>
+</section>
+
+<section style="padding: 3rem 2rem;">
+    <div class="container" style="max-width: 1200px;">
+        <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 2rem;" id="goal-workspace">
+            <!-- Input Panel -->
+            <div>
+                <div class="card">
+                    <h2 style="margin-bottom: 1.5rem;">Tell me about your goal</h2>
+
+                    <div style="margin-bottom: 2rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">What do you want to achieve?</label>
+                        <textarea
+                            id="goal-input"
+                            rows="4"
+                            style="width: 100%; padding: 1rem; border: 1px solid var(--muted-text); border-radius: 6px; background: var(--dark-surface); color: white; font-size: 1rem; font-family: inherit; resize: vertical;"
+                            placeholder="Example: I want to build a successful online business that generates $10k/month..."
+                        ></textarea>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Why is this important to you?</label>
+                        <textarea
+                            id="why-input"
+                            rows="3"
+                            style="width: 100%; padding: 1rem; border: 1px solid var(--muted-text); border-radius: 6px; background: var(--dark-surface); color: white; font-size: 1rem; font-family: inherit; resize: vertical;"
+                            placeholder="Example: Financial freedom, creative expression, helping others..."
+                        ></textarea>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Timeline</label>
+                        <select
+                            id="timeline-input"
+                            style="width: 100%; padding: 0.75rem; border: 1px solid var(--muted-text); border-radius: 6px; background: var(--dark-surface); color: white; font-size: 1rem;"
+                        >
+                            <option value="30">30 days</option>
+                            <option value="90" selected>90 days</option>
+                            <option value="180">6 months</option>
+                            <option value="365">1 year</option>
+                        </select>
+                    </div>
+
+                    <button
+                        onclick="generateGoalPlan()"
+                        class="btn btn-primary"
+                        style="width: 100%; font-size: 1.1rem; padding: 1rem;"
+                    >
+                        ✨ Generate AI Goal Plan
+                    </button>
+                </div>
+
+                <!-- Saved Goals -->
+                <div class="card" style="margin-top: 2rem;">
+                    <h3 style="margin-bottom: 1rem;">Your Saved Goals</h3>
+                    <div id="saved-goals" style="color: var(--muted-text);">
+                        <p>No saved goals yet. Create your first goal above!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Output Panel -->
+            <div>
+                <div class="card" id="ai-output-card" style="min-height: 500px;">
+                    <div id="loading-state" style="display: none; text-align: center; padding: 3rem;">
+                        <div class="spinner" style="margin: 0 auto 1rem auto;"></div>
+                        <p style="color: var(--muted-text);">AI is analyzing your goal...</p>
+                    </div>
+
+                    <div id="welcome-state" style="text-align: center; padding: 3rem; color: var(--muted-text);">
+                        <div style="font-size: 4rem; margin-bottom: 1rem;">🎯</div>
+                        <h3 style="margin-bottom: 1rem;">Ready to Set Your Goal?</h3>
+                        <p style="line-height: 1.8;">
+                            Fill in the details on the left and click "Generate AI Goal Plan" to get:
+                        </p>
+                        <ul style="text-align: left; max-width: 400px; margin: 2rem auto; line-height: 2;">
+                            <li>✓ Clarified, specific goal statement</li>
+                            <li>✓ Milestone breakdown</li>
+                            <li>✓ Weekly action steps</li>
+                            <li>✓ Potential obstacles & solutions</li>
+                            <li>✓ Success metrics</li>
+                        </ul>
+                    </div>
+
+                    <div id="result-state" style="display: none;">
+                        <h2 style="color: var(--primary-color); margin-bottom: 1.5rem;">Your Goal Roadmap</h2>
+
+                        <div style="margin-bottom: 2rem;">
+                            <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">🎯 Clarified Goal</h3>
+                            <p id="clarified-goal" style="background: var(--dark-surface); padding: 1rem; border-radius: 6px; line-height: 1.8;"></p>
+                        </div>
+
+                        <div style="margin-bottom: 2rem;">
+                            <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">📍 Key Milestones</h3>
+                            <div id="milestones" style="background: var(--dark-surface); padding: 1rem; border-radius: 6px;"></div>
+                        </div>
+
+                        <div style="margin-bottom: 2rem;">
+                            <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">⚡ Next 30 Days Action Steps</h3>
+                            <div id="action-steps" style="background: var(--dark-surface); padding: 1rem; border-radius: 6px;"></div>
+                        </div>
+
+                        <div style="margin-bottom: 2rem;">
+                            <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">⚠️ Potential Obstacles & Solutions</h3>
+                            <div id="obstacles" style="background: var(--dark-surface); padding: 1rem; border-radius: 6px;"></div>
+                        </div>
+
+                        <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+                            <button onclick="saveGoal()" class="btn btn-primary">💾 Save This Goal</button>
+                            <button onclick="resetTool()" class="btn btn-secondary">Create Another Goal</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+function generateGoalPlan() {
+    const goal = document.getElementById('goal-input').value.trim();
+    const why = document.getElementById('why-input').value.trim();
+    const timeline = document.getElementById('timeline-input').value;
+
+    if (!goal || !why) {
+        alert('Please fill in both your goal and why it matters to you');
+        return;
+    }
+
+    // Show loading
+    document.getElementById('welcome-state').style.display = 'none';
+    document.getElementById('result-state').style.display = 'none';
+    document.getElementById('loading-state').style.display = 'block';
+
+    // Simulate AI processing (replace with actual AI API call later)
+    setTimeout(() => {
+        // Generate clarified goal
+        const clarifiedGoal = `Achieve ${goal} within ${timeline} days because ${why}. This goal is specific, measurable, and aligned with your core values of personal growth and impact.`;
+        document.getElementById('clarified-goal').textContent = clarifiedGoal;
+
+        // Generate milestones
+        const timelineDays = parseInt(timeline);
+        const milestones = [
+            `Day ${Math.floor(timelineDays * 0.25)}: Research phase complete, strategy defined`,
+            `Day ${Math.floor(timelineDays * 0.5)}: MVP or first iteration launched`,
+            `Day ${Math.floor(timelineDays * 0.75)}: Tested with real users, iterated based on feedback`,
+            `Day ${timelineDays}: Goal achieved with measurable results`
+        ];
+        document.getElementById('milestones').innerHTML = milestones.map(m =>
+            `<div style="padding: 0.75rem; margin-bottom: 0.5rem; border-left: 3px solid var(--primary-color);">${m}</div>`
+        ).join('');
+
+        // Generate action steps
+        const actionSteps = [
+            'Week 1: Deep dive research - understand the landscape, study successful examples',
+            'Week 2: Create detailed plan and gather necessary resources/tools',
+            'Week 3: Begin execution, track daily progress, adjust as needed',
+            'Week 4: Review progress, celebrate wins, refine approach for next 30 days'
+        ];
+        document.getElementById('action-steps').innerHTML = actionSteps.map((step, i) =>
+            `<div style="padding: 0.75rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 1rem;">
+                <span style="color: var(--primary-color); font-weight: bold;">${i + 1}</span>
+                <span>${step}</span>
+            </div>`
+        ).join('');
+
+        // Generate obstacles
+        const obstacles = [
+            { obstacle: 'Losing motivation or momentum', solution: 'Use daily reflection tool, join community for accountability' },
+            { obstacle: 'Lack of clarity on next steps', solution: 'Break down into smaller tasks, seek guidance from this tool weekly' },
+            { obstacle: 'External distractions or competing priorities', solution: 'Time-block dedicated hours, communicate boundaries clearly' }
+        ];
+        document.getElementById('obstacles').innerHTML = obstacles.map(o =>
+            `<div style="padding: 1rem; margin-bottom: 1rem; background: rgba(255,68,68,0.1); border-left: 3px solid #ff4444; border-radius: 4px;">
+                <strong>Obstacle:</strong> ${o.obstacle}<br>
+                <strong style="color: var(--primary-color);">Solution:</strong> ${o.solution}
+            </div>`
+        ).join('');
+
+        // Show results
+        document.getElementById('loading-state').style.display = 'none';
+        document.getElementById('result-state').style.display = 'block';
+    }, 2000);
+}
+
+function saveGoal() {
+    alert('Goal saved! (Full save functionality will be added with backend storage)');
+}
+
+function resetTool() {
+    document.getElementById('goal-input').value = '';
+    document.getElementById('why-input').value = '';
+    document.getElementById('result-state').style.display = 'none';
+    document.getElementById('welcome-state').style.display = 'block';
+}
+
+.spinner {
+    border: 3px solid rgba(255,255,255,0.1);
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+</script>
+{% endblock %}
